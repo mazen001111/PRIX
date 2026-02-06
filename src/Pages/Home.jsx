@@ -3,7 +3,7 @@ import cover from "../assets/cover.jpg"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import CardFeatured from '../components/CardFeatured'
-import WOW from "wowjs"
+import { WOW } from "wowjs"
 export default function Home() {
 
   const nav = useNavigate()
@@ -37,7 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     if (cat.length > 0) {
-      const wow = new WOW.WOW({
+      const wow = new WOW({
         live: false,
         offset: 100
       })
