@@ -3,19 +3,18 @@ import cover from "../assets/cover.jpg"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import CardFeatured from '../components/CardFeatured'
+import WOW from "wowjs"
 export default function Home() {
 
   const nav = useNavigate()
   const [cat, setCat] = useState([])
   const [featured, setFeatured] = useState([])
 
-
   useEffect(() => {
     const getData = async () => {
       try {
         let res = await axios.get("http://localhost:1337/api/categories", { params: { populate: "*" } })
         setCat(res.data.data)
-        console.log()
       } catch (error) {
         console.log(error?.response?.data)
       }
@@ -36,8 +35,15 @@ export default function Home() {
     getData()
   }, [])
 
-
-
+  useEffect(() => {
+    if (cat.length > 0) {
+      const wow = new WOW.WOW({
+        live: false,
+        offset: 100
+      })
+      wow.init()
+    }
+  }, [cat])
 
   return (
     <div className='w-full h-full relative pt-200'>
@@ -62,7 +68,7 @@ export default function Home() {
           <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mt-10'>
             {
               cat.map((el) => (
-                <div key={el.documentId} className=" group hover:-translate-y-2 transition duration-300  h-fit overflow-hidden rounded-xl border border-[#8f96a355] relative cursor-pointer">
+                <div  key={el.documentId} className=" group hover:-translate-y-2 transition duration-300  h-fit overflow-hidden rounded-xl border border-[#8f96a355] relative cursor-pointer">
                   <div className='w-full h-full absolute bottom-0 z-31 left-0  text-xl p-5 font-semibold text-[#ffffff]'>
                     <p className='absolute bottom-7'>{el.catName}</p>
                     <p className='absolute text-[14px] text-[#8F96A3] bottom-3'>{(el.events).length} events</p>

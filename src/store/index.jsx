@@ -6,3 +6,4 @@ export const MenuIndex=create((set)=>({
     OpenMenu:()=>set(()=>({value:true})),
     toggleMenu:()=>set((state)=>({value:!state.value})),
 }))
+

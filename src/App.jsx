@@ -9,10 +9,15 @@ import Reminders from './Pages/Reminders'
 import Profile from './Pages/Profile'
 import Catalog from './Pages/Catalog'
 import Events from './Pages/Events'
+import { Toaster } from 'react-hot-toast'
 
 export default function App() {
   return (
     <div className=' text-black h-dvh w-full'>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainLayout />}>
