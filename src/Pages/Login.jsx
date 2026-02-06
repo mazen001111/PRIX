@@ -16,9 +16,8 @@ export default function Login() {
       identifier: values.email,
       password: values.password
     }
-    let domain = "http://localhost:1337"
     let endPoint = "/api/auth/local"
-    let url = domain + endPoint;
+    let url = API_URL + endPoint;
     const postData = async () => {
       try {
         let res = await axios.post(url, account)
@@ -28,7 +27,7 @@ export default function Login() {
         } else {
           sessionStorage.setItem("useLogin", res.data.jwt)
         }
-        
+
         toast.success("Login Succeded")
         nav("/")
       } catch (error) {
