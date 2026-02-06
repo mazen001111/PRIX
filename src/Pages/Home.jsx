@@ -3,7 +3,6 @@ import cover from "../assets/cover.jpg"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import CardFeatured from '../components/CardFeatured'
-import API_URL from '../config'
 
 export default function Home() {
 
@@ -14,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     const getData = async () => {
       try {
-        let res = await axios.get(`${API_URL}/api/categories`, { params: { populate: "*" } })
+        let res = await axios.get("http://localhost:1337/api/categories", { params: { populate: "*" } })
         setCat(res.data.data)
       } catch (error) {
         console.log(error?.response?.data)
@@ -26,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const getData = async () => {
       try {
-        let res = await axios.get(`${API_URL}/api/features`, { params: { populate: { events: { populate: "*" } } } })
+        let res = await axios.get("http://localhost:1337/api/features", { params: { populate: { events: { populate: "*" } } } })
         setFeatured(res.data.data)
         console.log(res.data.data)
       } catch (error) {
@@ -65,7 +64,7 @@ export default function Home() {
                     <p className='absolute text-[14px] text-[#8F96A3] bottom-3'>{(el.events).length} events</p>
                   </div>
                   <div className='w-full h-full bg-[#00000077] absolute top-0 z-30 left-0'></div>
-                  <img className='w-full group-hover:scale-[1.04] transition duration-300 ' src={API_URL + el.catPhoto.url} alt="" />
+                  <img className='w-full group-hover:scale-[1.04] transition duration-300 ' src={"http://localhost:1337" + el.catPhoto.url} alt="" />
                 </div>
               ))
             }

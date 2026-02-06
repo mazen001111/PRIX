@@ -16,8 +16,9 @@ export default function Login() {
       identifier: values.email,
       password: values.password
     }
+    let domain = "http://localhost:1337"
     let endPoint = "/api/auth/local"
-    let url = API_URL + endPoint;
+    let url = domain + endPoint;
     const postData = async () => {
       try {
         let res = await axios.post(url, account)

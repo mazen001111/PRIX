@@ -2,13 +2,12 @@ import React from 'react'
 import { FaCalendarWeek } from 'react-icons/fa'
 import { GoPeople } from 'react-icons/go'
 import { IoLocationOutline } from 'react-icons/io5'
-import API_URL from '../config'
 
 export default function CardFeatured({ el }) {
     return (
         <div className='group flex min-h-83 flex-col md:flex-row rounded-xl bg-[#14181f] hover:-translate-y-2  transition duration-300 overflow-hidden border border-[#8f96a355]'>
             <div className='w-full md:w-1/2 h-full flex justify-center items-center overflow-hidden'>
-                <img className='md:min-h-85 group-hover:scale-[1.05] overflow-hidden transition duration-300' src={API_URL + el.eventPhoto.url} alt="" />
+                <img className='md:min-h-85 group-hover:scale-[1.05] overflow-hidden transition duration-300' src={"http://localhost:1337" + el.eventPhoto.url} alt="" />
             </div>
             <div className='w-full flex  flex-col gap-4 md:w-1/2 p-4 min-[530]:p-8'>
                 <h1 className='text-lg min-[390px]:text-xl md:text-2xl font-semibold text-[#ffffff]'>{el.eventName}</h1>

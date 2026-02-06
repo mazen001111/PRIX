@@ -5,7 +5,6 @@ import { IoLocationOutline } from 'react-icons/io5'
 import { LuPhone } from 'react-icons/lu'
 import { MdOutlineEmail } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import API_URL from '../config'
 
 export default function Footer() {
   const [cat, setCat] = useState([])
@@ -13,7 +12,7 @@ export default function Footer() {
   useEffect(() => {
     const getData = async () => {
       try {
-        let res = await axios.get(`${API_URL}/api/categories`)
+        let res = await axios.get("http://localhost:1337/api/categories")
         setCat(res.data.data)
       } catch (error) {
         console.log(error)
